@@ -29,7 +29,11 @@ submitButton.addEventListener("click", (event) => {
     let button = document.createElement('button');
     button.setAttribute("class","removeButton");
     button.addEventListener("click", function(e) {
-        console.log("Remove item!" + myLibrary[(bookNum-1)].id);
+        let removedBook = myLibrary.indexOf(myLibrary.find((x) => x.id === button.getAttribute("id")));
+        bookshelf.removeChild(libraryDisplay[(bookNum-1)]);
+        myLibrary.splice(removedBook, 1);
+        libraryDisplay.splice(removedBook, 1);
+        bookNum--;
     });
     button.appendChild(document.createTextNode("remove"));
     libraryDisplay[(bookNum-1)].appendChild(button);
@@ -61,8 +65,13 @@ function displayBooks() {
 
         let button = document.createElement('button');
         button.setAttribute("class","removeButton");
+        button.setAttribute("id",myLibrary[i].id);
         button.addEventListener("click", function(e) {
-            console.log("Remove item!" + myLibrary[i].id);
+            let removedBook = myLibrary.indexOf(myLibrary.find((x) => x.id === button.getAttribute("id")));
+            bookshelf.removeChild(libraryDisplay[removedBook]);
+            myLibrary.splice(removedBook, 1);
+            libraryDisplay.splice(removedBook, 1);
+            bookNum--;
         });
         button.appendChild(document.createTextNode("remove"));
         libraryDisplay[i].appendChild(button);

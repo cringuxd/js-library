@@ -54,13 +54,20 @@ function addBookToLibrary(author, title, pages) {
     bookNum++;
 }
 
+Book.prototype.changeReadStatus = function(button) {
+    if(this.read === "unread") {
+        this.read = "read";
+        button.text = "read";
+    }
+};
+
 function displayBooks() {
     libraryDisplay = [];
     for(let i = 0; i < myLibrary.length; i++) {
         libraryDisplay[i] = document.createElement("div");
         libraryDisplay[i].setAttribute("class","book");
         libraryDisplay[i].setAttribute("id",myLibrary[i].id);
-        let text = document.createTextNode(myLibrary[i].title + " - " + myLibrary[i].author + " (pg count: " + myLibrary[i].pages + ")")
+        let text = document.createTextNode(myLibrary[i].title + " - " + myLibrary[i].author + " (pg count: " + myLibrary[i].pages + "), status: " + myLibrary[i].read);
         libraryDisplay[i].appendChild(text);
 
         let button = document.createElement('button');
@@ -75,6 +82,14 @@ function displayBooks() {
         });
         button.appendChild(document.createTextNode("remove"));
         libraryDisplay[i].appendChild(button);
+
+        let readButton = document.createElement('button');
+        readButton.setAttribute("class","readButton");
+        readButton.addEventListener('click',() => {
+            myLibrary[i].changeReadStatus(readButton);
+        });
+        readButton.appendChild(document.createTextNode("Read Book"));
+        libraryDisplay[i].appendChild(readButton);
         bookshelf.appendChild(libraryDisplay[i]);
     }
 }

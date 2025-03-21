@@ -19,4 +19,17 @@ html, body {
     padding-bottom: 4px;
     font-size: 16px;
     font-weight: bold;
+    border-bottom: 1px lightgrey solid;
+    padding-left: 4px;
+    padding-right: 4px;
+    text-align: center;
+}
+
+.removeButton {
+    margin-left: 8px;
+    border-radius: 4px;
+}
+
+.addButton {
+    border-radius: 4px;
 }

@@ -1,0 +1,22 @@
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+}
+
+.bookshelf {
+    background-color: grey;
+    width: 40%;
+    height: 40%;
+    position:absolute;
+    left: 30%;
+    top: 20%;
+    border: 2px black solid;
+    border-radius: 8px;
+}
+
+.book {
+    padding-bottom: 4px;
+    font-size: 16px;
+    font-weight: bold;
+}
